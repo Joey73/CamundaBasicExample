@@ -50,7 +50,9 @@ public class ProcessDefinition {
 	private String getProcessDefinitionAsString() {
 		WebTarget processDefinitionKeyProcessTarget = getProcessDefinitionKeyProcessTarget();
 		// WebTarget target = client.target(BASE_ADDRESS + "/process-definition/key/process");
-		String processDefinitionString = processDefinitionKeyProcessTarget.request(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE)
+		String processDefinitionString = processDefinitionKeyProcessTarget //
+				.request(MediaType.APPLICATION_JSON_TYPE) //
+				.accept(MediaType.APPLICATION_JSON_TYPE) //
 				.get(String.class);
 
 		return processDefinitionString;
@@ -59,8 +61,10 @@ public class ProcessDefinition {
 	private MyProcessDefinitionDto getProcessDefinition() {
 		WebTarget processDefinitionKeyProcessTarget = getProcessDefinitionKeyProcessTarget();
 
-		MyProcessDefinitionDto myProcessDefinitionDto = processDefinitionKeyProcessTarget.request(MediaType.APPLICATION_JSON_TYPE)
-				.accept(MediaType.APPLICATION_JSON_TYPE).get(MyProcessDefinitionDto.class);
+		MyProcessDefinitionDto myProcessDefinitionDto = processDefinitionKeyProcessTarget //
+				.request(MediaType.APPLICATION_JSON_TYPE) //
+				.accept(MediaType.APPLICATION_JSON_TYPE) //
+				.get(MyProcessDefinitionDto.class);
 
 		return myProcessDefinitionDto;
 	}

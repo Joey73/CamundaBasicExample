@@ -33,7 +33,7 @@ public class Task {
 		String variables = "{\"variables\":";
 		variables += "{\"FormFieldX\": {\"value\": 7}}";
 		variables += "}";
-		
+
 		System.out.println("\nVariables-String for completing task: " + variables);
 
 		Entity<String> entity = Entity.entity(variables, MediaType.APPLICATION_JSON);
@@ -70,7 +70,7 @@ public class Task {
 
 	public void printTaskList() {
 		List<MyTaskDto> myTaskDtoList = getTaskList();
-		if(myTaskDtoList.isEmpty()){
+		if (myTaskDtoList.isEmpty()) {
 			System.out.println("\nTasklist is empty.");
 			return;
 		}
@@ -85,15 +85,20 @@ public class Task {
 
 	private String getTaskAsString() {
 		WebTarget filteredTaskTarget = getProcessTarget();
-		String responseString = filteredTaskTarget.request(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).get(String.class);
+		String responseString = filteredTaskTarget //
+				.request(MediaType.APPLICATION_JSON_TYPE) //
+				.accept(MediaType.APPLICATION_JSON_TYPE) //
+				.get(String.class);
 
 		return responseString;
 	}
 
 	private List<MyTaskDto> getTaskList() {
 		WebTarget filteredTaskTarget = getProcessTarget();
-		List<MyTaskDto> myTaskDtoList = Arrays
-				.asList(filteredTaskTarget.request(MediaType.APPLICATION_JSON_TYPE).accept(MediaType.APPLICATION_JSON_TYPE).get(MyTaskDto[].class));
+		List<MyTaskDto> myTaskDtoList = Arrays.asList(filteredTaskTarget //
+				.request(MediaType.APPLICATION_JSON_TYPE) //
+				.accept(MediaType.APPLICATION_JSON_TYPE) //
+				.get(MyTaskDto[].class));
 
 		return myTaskDtoList;
 	}
