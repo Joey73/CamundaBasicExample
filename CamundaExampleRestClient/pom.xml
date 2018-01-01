@@ -4,11 +4,36 @@
 	<groupId>com.joerg</groupId>
 	<artifactId>CamundaExampleRestClient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<properties>
-		<camunda.version>7.7.0</camunda.version>
+		<camunda.version>7.8.0</camunda.version>
+	    <maven.compiler.source>1.8</maven.compiler.source>
+	    <maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
 	<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client -->
 	<dependencies>
 		<dependency>
@@ -33,7 +58,7 @@
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-bom</artifactId>
 			<version>7.7.0</version>
-			<scope>import</scope>
+			<scope>compile</scope>
 			<type>pom</type>
 		</dependency>
 
